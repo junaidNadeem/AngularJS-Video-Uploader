@@ -1,4 +1,5 @@
 module.exports = function (grunt) {
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
@@ -7,14 +8,26 @@ module.exports = function (grunt) {
         copy: {
             main: {
                 expand: true,
-                cwd: 'source/',
-                src: ['**'],
+                cwd: 'app/',
+                src: ['**', '!js/**', '!lib/**', '!**/*.css'],
                 dest: 'dist/'
+            },
+            shims: {
+                expand: true,
+                cwd: 'app/lib/webshim/shims',
+                src: ['**'],
+                dest: 'dist/js/shims'
+            }
+        },
+
+        rev: {
+            files: {
+                src: ['dist/**/*.{js,css}', '!dist/js/shims/**']
             }
         },
 
         useminPrepare: {
-            html: 'source/index.html'
+            html: 'app/index.html'
         },
 
         usemin: {
@@ -26,29 +39,19 @@ module.exports = function (grunt) {
                 report: 'min',
                 mangle: false
             }
-        },
-
-        cachebreaker: {
-            dev: {
-                options: {
-                    match: ['dist/assets/js/phpflow.min.js', 'dist/assets/phpflow.min.css']
-                },
-                files: {src: ['dist/index.html']}
-            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
-
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-rev');
     grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-cache-breaker');
 
     // Tell Grunt what to do when we type "grunt" into the terminal
     grunt.registerTask('default', [
-        'useminPrepare', 'copy', 'concat', 'uglify', 'cssmin', 'usemin','cachebreaker']);
-
+        'copy', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'rev', 'usemin'
+    ]);
 };
