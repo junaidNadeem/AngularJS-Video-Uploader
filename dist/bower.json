@@ -1,0 +1,16 @@
+{
+  "name": "angular-file-upload-preview",
+  "version": "1.0.0",
+  "title": "jQuery File Upload",
+  "description": "File Upload widget with multiple file selection, drag&amp;drop support, progress bar, validation and preview images.",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.6",
+    "blueimp-tmpl": ">=2.5.4",
+    "blueimp-load-image": ">=1.13.0",
+    "blueimp-canvas-to-blob": ">=2.1.1",
+    "angular": "^1.5.6",
+    "bootstrap": "^3.3.6"
+  },
+  "appPath": "app"
+}
