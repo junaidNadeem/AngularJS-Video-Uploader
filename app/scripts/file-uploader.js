@@ -29,9 +29,7 @@ const app = angular.module('app', [
 ])
 app.component('userInfo', {
     templateUrl: '../views/file-uploader.html',
-
     controller: function ($scope,$sce) {
-
         $scope.url = $sce.trustAsResourceUrl('');
         $scope.changeIt = function (url) {
             $scope.url = $sce.trustAsResourceUrl(url);
