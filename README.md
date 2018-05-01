@@ -5,9 +5,11 @@ version 0.16.0.
 
 ## Build & development
 
-Run `bower install` for downloading bower packages.
-Run `npm install` for downloading npm packages.
-Run `grunt serve` for running this application.
+1. Run `bower install` for downloading bower packages.
+
+2. Run `npm install` for downloading npm packages.
+
+3. Run `grunt serve` for running this application.
 
 ## Testing
 
