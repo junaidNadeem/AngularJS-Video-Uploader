@@ -1,4 +1,4 @@
-// Generated on 2016-07-27 using generator-angular 0.15.1
+// Generated on 2018-04-30 using generator-angular 0.16.0
 'use strict';
 
 // # Globbing
@@ -10,9 +10,10 @@
 module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-build-control');
-  var pkg = require('./package.json');
   // Time how long tasks take. Can help when optimizing build times
+  var pkg = require('./package.json');
   require('time-grunt')(grunt);
+
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
@@ -221,7 +222,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -339,7 +340,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'app',
+          module: 'angular-uploader',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -417,7 +418,6 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-
     buildcontrol: {
       options: {
         dir: 'dist',
@@ -427,13 +427,13 @@ module.exports = function (grunt) {
       },
       pages: {
         options: {
-          remote: 'git@github.com:shinwang1/Angular-deployment-tutorial.git',
+          remote: 'git@github.com:junaidNadeem/test-project.git',
           branch: 'gh-pages'
         }
       },
       heroku: {
         options: {
-          remote: 'git@heroku.com:tranquil-meadow-99024.git',
+          remote: 'git@heroku.com:floating-inlet-55472.git',
           branch: 'master',
           tag: pkg.version
         }

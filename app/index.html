@@ -1,81 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <!-- Force latest IE rendering engine or ChromeFrame if installed -->
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <![endif]-->
-    <meta charset="utf-8">
-    <title>Process Street- AngularJs File Upload & Preview</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <meta charset="utf-8">
+  <title>AngularJS Video Uploader</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
 
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/style.css">
-    <!-- endbuild -->
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/jquery.fileupload.css">
+  <link rel="stylesheet" href="styles/jquery.fileupload-ui.css">
+  <noscript>
+    <link rel="stylesheet" href="styles/jquery.fileupload-noscript.css">
+  </noscript>
+  <noscript>
+    <link rel="stylesheet" href="styles/jquery.fileupload-ui-noscript.css">
+  </noscript>
+  <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
 
-    <!-- build:css(.) styles/vendor.css -->
-    <link rel="stylesheet" href="styles/jquery.fileupload.css">
-    <link rel="stylesheet" href="styles/jquery.fileupload-ui.css">
-    <noscript>
-        <link rel="stylesheet" href="styles/jquery.fileupload-noscript.css">
-    </noscript>
-    <noscript>
-        <link rel="stylesheet" href="styles/jquery.fileupload-ui-noscript.css">
-    </noscript>
-    <!-- endbuild -->
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+  <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+  <script src="scripts/vendor/jquery.ui.widget.js"></script>
+  <script src="scripts/vendor/jquery.iframe-transport.js"></script>
+  <script src="scripts/vendor/jquery.fileupload.js"></script>
+  <script src="scripts/vendor/jquery.fileupload-process.js"></script>
+  <script src="scripts/vendor/jquery.fileupload-image.js"></script>
+  <script src="scripts/vendor/jquery.fileupload-audio.js"></script>
+  <script src="scripts/vendor/jquery.fileupload-video.js"></script>
+  <script src="scripts/vendor/jquery.fileupload-validate.js"></script>
+  <script src="scripts/vendor/jquery.fileupload-angular.js"></script>
 
-    <style>
-        .ng-cloak {
-            display: none;
-        }
-    </style>
-
-
-    <base href="/">
-</head>
-<body ng-app="app">
-<div class="container">
-    <user-info></user-info>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
-<script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
-<script src="//fast.wistia.net/assets/external/iframe-api-v1.js"></script>
-
-<!-- build:js(.) scripts/vendor.js -->
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/vendor/jquery.ui.widget.js"></script>
-<script src="scripts/vendor/jquery.iframe-transport.js"></script>
-<script src="scripts/vendor/jquery.fileupload.js"></script>
-<script src="scripts/vendor/jquery.fileupload-process.js"></script>
-<script src="scripts/vendor/jquery.fileupload-image.js"></script>
-<script src="scripts/vendor/jquery.fileupload-audio.js"></script>
-<script src="scripts/vendor/jquery.fileupload-video.js"></script>
-<script src="scripts/vendor/jquery.fileupload-validate.js"></script>
-<script src="scripts/vendor/jquery.fileupload-angular.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/file-uploader.js"></script>
-<!-- endbuild -->
-<script>
+  <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+  <script src="//fast.wistia.net/assets/external/iframe-api-v1.js"></script>
+  <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script>
     window._wq = window._wq || [];
     _wq.push({
-        id: "abcde12345", onReady: function (video) {
-            console.log("I got a handle to the video!", video);
-        }
+      id: "abcde12345", onReady: function (video) {
+        console.log("I got a handle to the video!", video);
+      }
     });
-</script>
+  </script>
+  <!-- endbuild -->
+</head>
+<body ng-app="angular-uploader">
+<ui-view></ui-view>
 </body>
 </html>
